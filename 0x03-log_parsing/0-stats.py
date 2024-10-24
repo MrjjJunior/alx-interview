@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Python script that reads stdin '''
+""" Python script that reads stdin """
 import sys
 import re
 
@@ -18,7 +18,7 @@ line_count = 0
 
 
 def log_stats():
-    ''' Prints the log stats '''
+    """ Prints the log stats """
     print(f"File size: {total_file_size}")
     for status_code in sorted(status_codes_count.keys()):
         if status_codes_count[status_code] > 0:
