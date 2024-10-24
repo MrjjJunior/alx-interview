@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''  '''
+''' Python script that reads stdin '''
 import sys
 import re
 
@@ -16,8 +16,9 @@ status_codes_count = {
 }
 line_count = 0
 
+
 def log_stats():
-    '''  '''
+    ''' Prints the log stats '''
     print(f"File size: {total_file_size}")
     for status_code in sorted(status_codes_count.keys()):
         if status_codes_count[status_code] > 0:
@@ -28,7 +29,8 @@ try:
     for line in sys.stdin:
         line_count = line_count + 1
 
-    exptd_fomat = re.match(r'(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1.1" (\d{3}) (\d+)', line)
+    regex = r'(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1.1" (\d{3}) (\d+)'
+    exptd_fomat = re.match(regex, line)
     if exptd_fomat:
         status_code = int(exptd_fomat.group(3))
         file_size = int(exptd_fomat.group(4))
