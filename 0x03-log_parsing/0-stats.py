@@ -41,5 +41,5 @@ try:
     
     print_stats()
 
-except KeyboardInterrupt:
+except Exception:
     print_stats()
