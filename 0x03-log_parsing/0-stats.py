@@ -16,6 +16,7 @@ status_codes_count = {
 }
 line_count = 0
 
+
 def print_stats():
     """Prints the statistics accumulated so far."""
     print(f"File size: {total_file_size}")
@@ -23,22 +24,23 @@ def print_stats():
         if status_codes_count[code] > 0:
             print(f"{code}: {status_codes_count[code]}")
 
+
 try:
     for line in sys.stdin:
         line_count += 1
-        
-        match = re.match(r'(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1.1" (\d{3}) (\d+)', line)
+        regex = r'(\S+) - \[(.*?)\] "GET /projects/260 HTTP/1.1" (\d{3}) (\d+)'
+        match = re.match(regex, line)
         if match:
             status_code = int(match.group(3))
             file_size = int(match.group(4))
-            
+
             total_file_size += file_size
             if status_code in status_codes_count:
                 status_codes_count[status_code] += 1
-        
+
         if line_count % 10 == 0:
             print_stats()
-    
+
     print_stats()
 
 except Exception:
