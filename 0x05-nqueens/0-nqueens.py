@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 import sys
 
+
 def print_solution(solution):
     """Prints the solution in the required format"""
     print([[i, solution[i]] for i in range(len(solution))])
+
 
 def is_safe(solution, row, col):
     """Check if a queen can be placed at row, col without being attacked"""
@@ -13,6 +15,7 @@ def is_safe(solution, row, col):
            solution[i] + i == col + row:
             return False
     return True
+
 
 def solve_nqueens(N):
     """Solve the N-queens problem and print all solutions"""
@@ -29,13 +32,12 @@ def solve_nqueens(N):
     solution = [-1] * N
     backtrack(0)
 
+
 def main():
-    # Check argument count
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
-    # Validate N
     try:
         N = int(sys.argv[1])
     except ValueError:
@@ -46,9 +48,8 @@ def main():
         print("N must be at least 4")
         sys.exit(1)
 
-    # Solve the problem
     solve_nqueens(N)
+
 
 if __name__ == "__main__":
     main()
-
