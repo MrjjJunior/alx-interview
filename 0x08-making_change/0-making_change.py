@@ -11,7 +11,7 @@ def makeChange(coins, total):
     # R1 x 10 = R10
     if total < 0:
         return 0
-    
+
     coins.sort(reverse=True)
 
     count = 0
@@ -24,5 +24,5 @@ def makeChange(coins, total):
 
     if total != 0:
         return -1
-    
+
     return count
