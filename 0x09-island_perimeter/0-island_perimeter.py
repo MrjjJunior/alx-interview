@@ -5,6 +5,11 @@
 
 def island_perimeter(grid):
     """
+    calculate the perimeter
+    Args:
+        grid (list): a 2D list of integers
+    Returns:
+        int: the perimeter of the island
     """
 
     p = 0
